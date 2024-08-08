@@ -1,0 +1,18 @@
+# General ignore rules
+.DS_Store
+*.log
+*.env
+
+# Backend-specific ignore rules
+backend/__pycache__/
+backend/*.pyc
+backend/*.sqlite3
+
+# Frontend-specific ignore rules
+frontend/node_modules/
+frontend/.nuxt/
+frontend/dist/
+frontend/*.log
+
+# Do not ignore JSON files (including Postman collection)
+!*.json
