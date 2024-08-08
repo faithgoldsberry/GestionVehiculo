@@ -1,0 +1,42 @@
+[
+    {
+        "model": "vehiculos.vehiculo",
+        "fields": {
+            "vin": "1HGCM82633A004352",
+            "motor": "V6-123456",
+            "cilindrada": 3500,
+            "ano": 2020,
+            "marca": "Honda",
+            "modelo": "Accord",
+            "version": "EX-L",
+            "dueno": "Juan González"
+        }
+    },
+    {
+        "model": "vehiculos.vehiculo",
+        "fields": {
+            "vin": "1HGCM82633A004353",
+            "motor": "V6-123457",
+            "cilindrada": 2500,
+            "ano": 2019,
+            "marca": "Toyota",
+            "modelo": "Camry",
+            "version": "SE",
+            "dueno": "Jorge Pérez"
+        }
+    },
+    {
+        "model": "vehiculos.placa",
+        "fields": {
+            "patente": "ABC1234",
+            "vehiculo": "1HGCM82633A004352"
+        }
+    },
+    {
+        "model": "vehiculos.placa",
+        "fields": {
+            "patente": "XYZ5678",
+            "vehiculo": "1HGCM82633A004353"
+        }
+    }
+]
