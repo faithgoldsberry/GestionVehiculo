@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "1ccbaff7-0e05-4d42-860d-da11ebeaa55a",
+		"name": "Vehiculos API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37505626"
+	},
+	"item": [
+		{
+			"name": "Vehiculos List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vehiculos/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vehiculos",
+						""
+					]
+				},
+				"description": "### GET /vehículos\n\n**Propósito**:  \nEste endpoint recupera una lista de todos los vehículos registrados.\n\n**Solicitud**:\n\n- **Método**: GET\n    \n- **URL**: `http://127.0.0.1:8000/vehiculos/`\n    \n\n**Respuesta**:\n\n- **Código de Estado**: 200 OK\n    \n- **Tipo de Contenido**: application/json\n    \n- **Cuerpo**: Un array en JSON que contiene detalles de todos los vehículos.\n    \n\n**Ejemplo de Respuesta**:\n\n``` json\n[\n    {\n        \"placas\": [\n            {\n                \"patente\": \"ABC1234\",\n                \"vehiculo\": \"1HGCM82633A004352\"\n            }\n        ],\n        \"vin\": \"1HGCM82633A004352\",\n        \"motor\": \"V6-123456\",\n        \"cilindrada\": 3500,\n        \"ano\": 2020,\n        \"marca\": \"Honda\",\n        \"modelo\": \"Accord\",\n        \"version\": \"EX-L\"\n    },\n    {\n        \"placas\": [\n            {\n                \"patente\": \"XYZ5678\",\n                \"vehiculo\": \"1HGCM82633A004353\"\n            }\n        ],\n        \"vin\": \"1HGCM82633A004353\",\n        \"motor\": \"V6-123457\",\n        \"cilindrada\": 2500,\n        \"ano\": 2019,\n        \"marca\": \"Toyota\",\n        \"modelo\": \"Camry\",\n        \"version\": \"SE\"\n    }\n]\n\n ```\n\n**Notas**:\n\n- El campo `placas` contiene un array de placas asociadas con cada vehículo.\n    \n- Cada vehículo se identifica por su `vin`, que es único."
+			},
+			"response": []
+		},
+		{
+			"name": "Vehiculos Detalle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vehiculos/1HGCM82633A004352",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vehiculos",
+						"1HGCM82633A004352"
+					]
+				},
+				"description": "### GET /vehicle/search\n\n**Propósito**:  \nEste endpoint permite buscar información de un vehículo mediante su VIN o placa patente.\n\n**Solicitud**:\n\n- **Méthodo**: GET\n    \n- **URL**:`http://127.0.0.1:8000/?search=`  \n    Reemplace con el VIN o placa patente del vehículo que desea buscar.\n    \n\n**Respuesta**:\n\n- **Código de Estado**: 200 OK\n    \n- **Tipo de contenido**: application/json\n    \n- **Cuerpo**: Un objeto en JSON que contiene detalles del vehículo encontrado.\n    \n\n**Ejemplo de Respuesta**:\n\n``` json\n{\n    \"placas\": [\n        {\n            \"patente\": \"ABC1234\",\n            \"vehiculo\": \"1HGCM82633A004352\"\n        }\n    ],\n    \"vin\": \"1HGCM82633A004352\",\n    \"motor\": \"V6-123456\",\n    \"cilindrada\": 3500,\n    \"ano\": 2020,\n    \"marca\": \"Honda\",\n    \"modelo\": \"Accord\",\n    \"version\": \"EX-L\",\n    \"dueno\": \"Juan Pérez\"\n}\n\n ```\n\n**Notas**:\n\n- Si se encuentra un vehículo con el VIN o placa patente proporcionado, se devolverán los detalles completos del vehículo.\n    \n- Si no se encuentra un vehículo con el valor proporcionado, la respuesta será un mensaje indicando que no se encontró el vehículo."
+			},
+			"response": []
+		},
+		{
+			"name": "Nuevo Vehiculo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"vin\": \"1HGCM82633A004355\",\n  \"motor\": \"V6-123459\",\n  \"cilindrada\": 3200,\n  \"ano\": 2022,\n  \"marca\": \"Ford\",\n  \"modelo\": \"Mustang\",\n  \"version\": \"GT\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/vehiculos/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vehiculos",
+						""
+					]
+				},
+				"description": "### POST /vehicle\n\n**Propósito**:  \nEste endpoint permite agregar un nuevo vehículo al sistema.\n\n**Solicitud**:\n\n- **Método**: POST\n    \n- **URL**: `http://127.0.0.1:8000/vehiculos/`\n    \n- **Cuerpo**: Un objeto JSON con la información del vehículo a agregar. El cuerpo de la solicitud debe incluir todos los campos obligatorios y puede incluir múltiples placas asociadas al vehículo.\n    \n\n**Ejemplo de Cuerpo de Solicitud**:\n\n``` json\n{\n    \"vin\": \"1HGCM82633A004352\",\n    \"motor\": \"V6-123456\",\n    \"cilindrada\": 3500,\n    \"ano\": 2020,\n    \"marca\": \"Honda\",\n    \"modelo\": \"Accord\",\n    \"version\": \"EX-L\",\n    \"dueno\": \"Juan Pérez\",\n    \"placas\": [\n        {\n            \"patente\": \"ABC1234\"\n        }\n    ]\n}\n\n ```\n\n**Respuesta**:\n\n- **Código de Estado**: 201 Created\n    \n- **Tipo de contenido**: application/json\n    \n- **Cuerpo**: Un objeto JSON que confirma la adición del vehículo y muestra los detalles del mismo.\n    \n\n**Ejemplo de Respuesta**:\n\n``` json\n{\n    \"message\": \"¡Vehículo añadido exitosamente!\",\n    \"vehiculo\": {\n        \"vin\": \"1HGCM82633A004352\",\n        \"motor\": \"V6-123456\",\n        \"cilindrada\": 3500,\n        \"ano\": 2020,\n        \"marca\": \"Honda\",\n        \"modelo\": \"Accord\",\n        \"version\": \"EX-L\",\n        \"dueno\": \"Juan Pérez\",\n        \"placas\": [\n            {\n                \"patente\": \"ABC1234\",\n                \"vehiculo\": \"1HGCM82633A004352\"\n            }\n        ]\n    }\n}\n\n ```\n\n**Notas**:\n\n- El código de estado 201 Created indica que el vehículo se ha agregado correctamente al sistema.\n    \n- Si hay un error en la solicitud (por ejemplo, si faltan campos obligatorios), el servidor devolverá un código de estado de error y un mensaje explicativo."
+			},
+			"response": []
+		}
+	]
+}
