@@ -65,7 +65,7 @@ La documentación de la API está disponible en el repositorio y el Doc de Googl
 **Backend**:
 1. **Clonar el repositorio**:
    ```bash
-   git clone https://github.com/faithgoldsberry/Consulta_Vehiculos.git
+   git clone https://github.com/faithgoldsberry/GestionVehiculo.git
 
 2. **Navegar al directorio del backend**:
    ```bash
